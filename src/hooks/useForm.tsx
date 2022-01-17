@@ -9,8 +9,8 @@ const types = {
   },
   cpf: {
     regex:
-      /([0-9]{2}[.]?[0-9]{3}[.]?[0-9]{3}[/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[.]?[0-9]{3}[.]?[0-9]{3}[-]?[0-9]{2})/g,
-    message: 'Preencha um CPF Válido.',
+    /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)/,
+    message: 'Preencha um CPF Válido e no formato correto: xxx.xxx.xxx-xx',
   },
   date: {
     regex: /(?!^$)([^\s])/,
@@ -56,7 +56,7 @@ const useForm = (type: formTypes) => {
     onChange,
     error,
     validate: () => validate(value),
-    // onBlur: () => validate(value),
+    onBlur: () => validate(value),
   };
 };
 

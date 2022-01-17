@@ -24,14 +24,7 @@ const Formulario = () => {
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
 
-    console.log('nome:', nome.value);
-    console.log('data:', dataNascimento.value);
-    console.log('cpf:', cpf.value);
-    console.log('sexo:', sexo.value);
-    console.log('endereco:', endereco.value);
-    console.log('status:', status.value);
-
-    if (nome.validate() && dataNascimento.validate() && sexo.validate()) {
+    if (nome.validate() && cpf.validate() && dataNascimento.validate() && sexo.validate()) {
       let pacientes: Pacientes[] = [];
 
       if (localStorage.hasOwnProperty('pacientes')) {
@@ -58,6 +51,7 @@ const Formulario = () => {
         ];
 
         localStorage.setItem('pacientes', JSON.stringify(pacientes));
+        alert(`Paciente ${nome.value} cadastrado com sucesso.`)
       }
     }
   }
@@ -80,7 +74,13 @@ const Formulario = () => {
           placeholder="000.000.000-00"
           {...cpf}
         />
-        <Input label="Sexo:" type="text" name="sexo" {...sexo} />
+        <label>Sexo: </label>
+        <select required name="sexo" className={styles.select} {...sexo}>
+          <option hidden disabled></option>
+          <option value="masculino">Masculino</option>
+          <option value="feminino">Feminino</option>
+          <option value="outros">Outros...</option>
+        </select>
         <Input label="Endereço:" type="text" name="endereco" {...endereco} />
         <label>Status: </label>
         <select required name="status" className={styles.select} {...status}>
