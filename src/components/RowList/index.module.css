@@ -1,0 +1,11 @@
+.rowWrapper td div {
+  display: inline-block;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.rowWrapper td div button {
+  min-width: 0;
+  background: #fff;
+}

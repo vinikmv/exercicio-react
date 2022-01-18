@@ -1,0 +1,26 @@
+.rowWrapper td input {
+  width: 90%;
+}
+
+.rowWrapper td select {
+  height: 50px;
+  align-items: center;
+  font-size: 14px;
+  border-radius: 0.4rem;
+}
+
+
+.rowWrapper td div {
+  display: inline-block;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+}
+
+.rowWrapper td div input {
+  margin-top: 1rem;
+}
+.rowWrapper td div button {
+  min-width: 0;
+  background: #fff;
+}

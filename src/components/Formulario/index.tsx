@@ -12,6 +12,9 @@ export type Pacientes = {
   endereco?: string;
   status: string;
 };
+export function formatarCPF(cpf: string): string {
+  return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+}
 
 const Formulario = () => {
   const nome = useForm('text');
@@ -21,10 +24,15 @@ const Formulario = () => {
   const endereco = useForm('endereco');
   const status = useForm('text');
 
-  async function handleSubmit(event: React.FormEvent) {
+  function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
 
-    if (nome.validate() && cpf.validate() && dataNascimento.validate() && sexo.validate()) {
+    if (
+      nome.validate() &&
+      cpf.validate() &&
+      dataNascimento.validate() &&
+      sexo.validate()
+    ) {
       let pacientes: Pacientes[] = [];
 
       if (localStorage.hasOwnProperty('pacientes')) {
@@ -43,7 +51,7 @@ const Formulario = () => {
           {
             nome: nome.value,
             dataNascimento: dataNascimento.value,
-            cpf: cpf.value,
+            cpf: formatarCPF(cpf.value),
             sexo: sexo.value,
             endereco: endereco.value,
             status: status.value,
@@ -51,7 +59,7 @@ const Formulario = () => {
         ];
 
         localStorage.setItem('pacientes', JSON.stringify(pacientes));
-        alert(`Paciente ${nome.value} cadastrado com sucesso.`)
+        alert(`Paciente ${nome.value} cadastrado com sucesso.`);
       }
     }
   }
