@@ -2,18 +2,29 @@ import { InputHTMLAttributes } from 'react';
 import styles from './index.module.css';
 
 export type InputProps = {
-  label: string;
+  label?: string;
   error?: string | null;
-  children?: React.ReactNode; 
-} & InputHTMLAttributes<HTMLInputElement>
+  children?: React.ReactNode;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const Input = ({ label, children, type, name, value, onChange, error, onBlur, ...props }: InputProps) => {
-
+const Input = ({
+  label,
+  children,
+  type,
+  name,
+  value,
+  onChange,
+  error,
+  onBlur,
+  ...props
+}: InputProps) => {
   return (
     <div className={styles.wrapper}>
-      <label className={styles.label} htmlFor={name}>
-        {label}
-      </label>
+      {!!label && (
+        <label className={styles.label} htmlFor={name}>
+          {label}
+        </label>
+      )}
       <input
         id={name}
         name={name}

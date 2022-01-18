@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 type formTypes = 'text' | 'cpf' | 'date' | 'endereco';
 
@@ -9,7 +9,7 @@ const types = {
   },
   cpf: {
     regex:
-    /(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)/,
+    /(^\d{3}\.\d{3}\.\d{3}-\d{2}$)/,
     message: 'Preencha um CPF Válido e no formato correto: xxx.xxx.xxx-xx',
   },
   date: {
@@ -19,8 +19,8 @@ const types = {
 };
 
 const useForm = (type: formTypes) => {
-  const [value, setValue] = React.useState('');
-  const [error, setError] = React.useState<string | null>(null);
+  const [value, setValue] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   const validate = (value: string) => {
     if (value.length === 0) {
