@@ -3,16 +3,18 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Formulario from './components/Formulario';
 import Header from './components/Header';
+import Lista from './components/Lista';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Header />
     <Routes>
     <Route path="/" element={<Formulario />} />
+    <Route path="/listagem" element={<Lista />} />
     </Routes>
-    <Header />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
