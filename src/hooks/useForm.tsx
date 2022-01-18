@@ -9,8 +9,8 @@ const types = {
   },
   cpf: {
     regex:
-    /(^\d{3}\.\d{3}\.\d{3}-\d{2}$)/,
-    message: 'Preencha um CPF Válido e no formato correto: xxx.xxx.xxx-xx',
+    /(^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$)/,
+    message: 'Preencha um CPF Válido',
   },
   date: {
     regex: /(?!^$)([^\s])/,
